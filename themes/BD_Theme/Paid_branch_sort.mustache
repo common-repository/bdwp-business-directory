@@ -1,0 +1,26 @@
+<div class="bdwp-branch paid">
+    <div class="bdwp-main-info">
+        <div class="bdwp-title">
+            <a href="{{permalink}}">{{uc-title}}</a>
+        </div>
+        <div class="bdwp-entry">
+            {{&image}}
+            <div class="bdwp-summary">
+                <div class="bdwp-slogan">{{slogan}}</div>
+                <div class="bdwp-address">{{address}}</div>
+                <div class="bdwp-categories">
+                    {{categories}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bdwp-contact-info">
+        <ul>
+            <li><i class="fa fa-phone" aria-hidden="true"></i><span>{{contacts.phone}}</span></li>
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><span>{{#email-section}}<a {{&email-form-selector-attrs}}>ΣΤΕΙΛΤΕ ΜΗΝΥΜΑ</a>{{/email-section}}</span></li>
+            <li><i class="fa fa-globe" aria-hidden="true"></i><span>{{#url-section}}<a href="{{contacts.url}}">ΙΣΤΟΤΟΠΟΣ</a>{{/url-section}}</span></li>
+            <li><i class="fa fa-map-marker" aria-hidden="true"></i><span>{{#map-section}}<a {{&map-link-attrs}}>ΧΑΡΤΗΣ</a>{{/map-section}}</span></li>
+        </ul>
+        <a class="bdwp-read-more" href="{{permalink}}"><i class="fa fa-search" aria-hidden="true"></i>ΠΕΡΙΣΣΟΤΕΡΑ</a>
+    </div>
+</div>

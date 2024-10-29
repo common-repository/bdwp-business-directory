@@ -1,0 +1,145 @@
+<div class="bdwp-branch-wrapper">
+    <div class="bdwp-branch-header">
+        <menu {{tabs-pool-attrs}}>
+            <menuitem class="active" {{tabs-trigger}}="details">
+                <span class="fa fa-info-circle"></span><span>Πληροφορίες</span>
+            </menuitem>
+            {{#map-section}}
+            <menuitem id="{{map-tab-id}}" {{tabs-trigger}}="map">
+                <span class="fa fa-map-marker"></span><span>Χάρτης</span>
+            </menuitem>
+            {{/map-section}}
+        </menu>
+        <a href="{{back-link}}"><span class="fa fa-arrow-circle-left "></span><span>Πίσω στον κατάλογο</span></a>
+    </div><!-- /bdwp-branch-header -->
+    <div class="bdwp-branch-content">
+        <div class="bdwp-content">
+            <section {{tabs-target}}="details" class="bdwp-branch-info-block">
+                <h1>{{uc-title}}</h1>
+                <em>{{slogan}}</em>
+                <address>
+                    <ul>
+                        <li>
+                            {{#address-section}}
+                            <span class="fa fa-lg fa-map-marker"></span>
+                            <span>{{address}}</span>
+                            {{#map-section}}<a {{tabs-remote}}="map">Δείτε στον χάρτη &#9658;</a>{{/map-section}}
+                            {{/address-section}}
+                        </li>
+                        <li>
+                            {{#phones-section}}
+                            <div class="item inline">
+                                {{&icon}}
+                                <span>{{value}}</span>
+                                <span class="bdwp-tooltip">{{title}}</span>
+                            </div>
+                            {{/phones-section}}
+                        </li>
+                        <li>
+                            {{#emails-section}}
+                            <div id='bdwp-email' class="item">
+                                {{&icon}}
+                                <a {{&email-form-selector-attrs}}>
+                                    Στείλτε Μήνυμα
+                                </a>
+                            </div>
+                            {{/emails-section}}
+                        </li>
+                        <li>
+                            {{#urls-section}}
+                            <div class="item">
+                                {{&icon}}
+                                <a href="{{value}}" target="_blank">{{title}}</a>
+                            </div>
+                            {{/urls-section}}
+                        </li>
+                    </ul>
+                </address>
+            </section>
+            {{#short-info-section}}
+            <section {{tabs-target}}="map gallery" class="bdwp-branch-info-block" hidden>
+                <div class="bdwp-branch-block-caption">
+                    <h1>{{title}}</h1>
+                    <div class="bdwp-branch-phone">
+                        <span class="fa black fa-lg fa-phone"></span>
+                        <span>{{phones-section.0.value}}</span>
+                    </div>
+                </div>
+                <address>
+                    <span class="fa fa-lg fa-map-marker"></span>
+                    <span>{{address}}</span>
+                    {{#map-section}}<a href="{{map-directions-url}}" target="_blank">Click here to get Directions</a>{{/map-section}}
+                </address>
+            </section>
+            {{/short-info-section}}
+            {{#map-section}}
+            <section {{full-map-attrs}} id="map-container" {{tabs-target}}="map" class="bdwp-branch-info-block" hidden>
+                {{&full-map}}
+            </section>
+            {{/map-section}}
+            {{#categories-section}}
+            <menu {{tabs-target}}='details' class="bdwp-branch-panel">
+                <div class="bdwp-branch-block-caption">Κατηγορίες:</div>
+                <div class="bdwp-branch-block-content inline">{{&categories}}</div>
+            </menu>
+            {{/categories-section}}
+            {{#description-section}}
+            <section {{tabs-target}}='details' class="bdwp-branch-info-block">
+                <div class="bdwp-branch-block-caption">
+                    <span class="fa fa-lg fa-building"></span><span>Περιγραφή Επιχείρησης</span>
+                </div>
+                <div class="bdwp-branch-block-content">{{&description}}</div>
+                <hr />
+            </section>
+            {{/description-section}}
+            {{#products-section}}
+            <section {{tabs-target}}='details' class="bdwp-branch-info-block">
+                <div class="bdwp-branch-block-caption">
+                    <span class="fa fa-lg fa-file-text"></span><span>Περιγραφή Υπηρεσιών-Προϊόντων</span>
+                </div>
+                <div class="bdwp-branch-block-content">{{&products}}</div>
+                <hr />
+            </section>
+            {{/products-section}}
+        </div><!-- /bdwp-content -->
+        <div class="bdwp-sidebar">
+            {{#eshop-section}}
+            <div class="eshop_link">
+                <a href='{{eshop-href}}' target='_blank'>{{eshop-title}}</a>
+            </div>
+            {{/eshop-section}}
+            {{&widget-area.2}}
+            {{#map-section}}
+            <aside {{mini-map-attrs}} id="mini-map-container" {{tabs-target}}='details gallery' class="bdwp-branch-widget">
+                {{&mini-map}}
+                <a href="{{map-directions-url}}" target="_blank">Click here to get Directions</a>
+            </aside>
+            {{/map-section}}
+            <menu class="bdwp-branch-panel">
+                <div class="bdwp-branch-block-caption">Μοιράσου το:</div>
+                <div class="bdwp-branch-block-content inline">
+                    <!-- Facebook -->
+                    <a href="http://www.facebook.com/sharer.php?u={{link}}" target="_blank">
+                        <span class="share-btn facebook fa fa-facebook"></span>
+                    </a>
+                    <!-- Google+ -->
+                    <a href="https://plus.google.com/share?url={{link}}" target="_blank">
+                        <span class="share-btn google fa fa-google-plus"></span>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/share?url={{link}}&amp;text={{title}}" target="_blank">
+                        <span class="share-btn twitter fa fa-twitter"></span>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{link}}&amp;title={{title}}" target="_blank">
+                        <span class="share-btn linkedin fa fa-linkedin"></span>
+                    </a>
+                    <!-- Bookmarks -->
+                    <a {{bookmark-attrs}} rel="sidebar" title="bookmark this page">
+                        <span class="share-btn bookmark fa fa-star"></span>
+                    </a>
+                </div>
+            </menu>
+        </div><!-- /bdwp-sidebar -->
+    </div><!-- /bdwp-branch-content -->
+</div><!-- /bdwp-wrapper -->

@@ -1,0 +1,84 @@
+<div class="bdwp-listing-wrapper">
+    <div {{listing-content-wrapper-attrs}} class="bdwp-content">
+        {{#form-section}}
+            <form id="bdwp-search-form" {{search-form-attrs}}>
+                <div class="bdwp-row">
+                    <div class="bdwp-column">
+                        <div class="bdwp-field-group">
+                            <label {{category-label-attrs}}>Τί</label>
+                            <div class="bdwp-field">
+                                <select {{category-select-attrs}}>
+                                    {{#category-options}}
+                                    <option value='{{name}}' {{selected}}>{{name}}</option>
+                                    {{/category-options}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="bdwp-field-description">
+                            {{category-description}}
+                        </div>
+                    </div>
+                    {{#location-section}}
+                    <div class="bdwp-column">
+                        <div class="bdwp-field-group list">
+                            {{#location-label}}
+                                <label {{cities-label-attrs}}>Πού</label>
+                            {{/location-label}}
+                            <div class="bdwp-field">
+                                {{&country-select}}
+                            </div>
+                            <div class="bdwp-field">
+                                {{&area-select}}
+                            </div>
+                            <div class="bdwp-field">
+                                {{&prefecture-select}}
+                            </div>
+                            <div class="bdwp-field">
+                                {{&city-select}}
+                            </div>
+                        </div>
+                        <div class="bdwp-field-description">
+                            {{location-description}}
+                        </div>
+                    </div>
+                    {{/location-section}}
+                    {{#languages-section}}
+                    <div class="bdwp-column">
+                        <div class="bdwp-field-group">
+                            <label {{languages-label-attrs}}>Γλώσσες</label>
+                            <div class="bdwp-field">
+                                <select {{languages-select-attrs}}>
+                                    {{#languages-options}}
+                                    <option value='{{name}}' {{selected}}>{{name}}</option>
+                                    {{/languages-options}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="bdwp-field-description">
+                            {{languages-description}}
+                        </div>
+                    </div>
+                    {{/languages-section}}
+                </div>
+                <div class="bdwp-row offset-top">
+                    <div class="bdwp-column">
+                        <a href="{{listing-url}}" {{search-clear-attrs}}>Εκκαθάριση Αναζήτησης</a>
+                    </div>
+                    <div class="bdwp-column">
+                        <input {{search-submit-attrs}} type="submit" value="Αναζήτηση">
+                    </div>
+                </div>
+            </form>
+        {{/form-section}}
+        <div id="bdwp-listing-loader" {{listing-loader-attrs}}>Loading...</div>
+        {{#pagination-section}}
+            <div class="bdwp-found" {{listing-count-attrs}}></div>
+        {{/pagination-section}}
+        <div class="bdwp-listing" {{listing-wrapper-attrs}}></div>
+        {{&banner-a}}
+        {{#pagination-section}}
+            <div class="bdwp-pagination" {{pagination-wrapper-attrs}}></div>
+        {{/pagination-section}}
+    </div>
+    <div class="bdwp-sidebar">{{&mini-map}}{{&banner-b}}{{&widget-area.1}}</div>
+</div>

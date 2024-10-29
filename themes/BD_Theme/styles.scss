@@ -1,0 +1,1386 @@
+/**
+ * BD Theme
+ */
+
+$brand-blue: #4ca7d6;
+$light-blue: #c4ddea;
+$brand-gray: #333;
+$light-gray: #5F5F5F;
+$lighter-gray: #e8e8e8;
+$lightest-gray: #f7f7f7;
+$break-small: 41em;
+
+@mixin border-image-gradient($direction, $first-color, $second-color) {
+  -webkit-border-image: linear-gradient($direction, $first-color, $second-color) 0 100%;
+  -moz-border-image: linear-gradient($direction, $first-color, $second-color) 0 100%;
+  -o-border-image: linear-gradient($direction, $first-color, $second-color) 0 100%;
+  border-image: linear-gradient($direction, $first-color, $second-color) 0 100%;
+}
+
+@mixin brand-font() {
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+@mixin background-transition {
+  transition: background-color 0.5s ease;
+}
+
+.bdwp-map-container {
+  position: relative;
+
+  &:before {
+    padding-top: 100%;
+    display: block;
+    content: '';
+  }
+
+  .bdwp-map-container-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bdwp-map-canvas {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    font-family: inherit;
+  }
+}
+
+%bdwp-wrapper {
+  all: initial;
+  display: flex;
+  flex-direction: column;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  justify-content: space-between;
+  font-size: 14px;
+  max-width: 80em;
+  margin: 1em auto;
+  padding: 1em;
+  color: $brand-gray;
+
+  %bdwp-layout-column {
+    all: initial;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+  }
+
+  .bdwp-content {
+    @extend %bdwp-layout-column;
+  }
+
+  .bdwp-sidebar {
+    @extend %bdwp-layout-column;
+  }
+
+  @media screen and (min-width: $break-small) {
+    .bdwp-content {
+      flex-grow: 1;
+    }
+
+    .bdwp-sidebar {
+      width: 350px;
+      min-width: 350px;
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  .bdwp-map-container {
+    position: relative;
+
+    &:before {
+      padding-top: 100%;
+      display: block;
+      content: '';
+    }
+
+    .bdwp-map-container-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .bdwp-map-canvas {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      font-family: inherit;
+    }
+  }
+}
+
+.bdwp-technical-issues-warning {
+  all: initial;
+  @include brand-font;
+  max-width: 700px;
+  margin: auto;
+  font-size: 2em;
+  background: $lighter-gray;
+  border-radius: 1em;
+  padding: 1em;
+  text-align: center;
+  color: $brand-gray;
+  display: flex;
+  flex-direction: column;
+  border: 30px solid transparent;
+  background-clip: padding-box;
+}
+
+.bdwp-branch-missing-warning {
+  @extend .bdwp-technical-issues-warning;
+
+  a {
+    margin-top: 1em;
+    text-decoration: underline;
+  }
+}
+
+/**
+ * Listing page styles
+ */
+
+.bdwp-listing-wrapper {
+  @extend %bdwp-wrapper;
+
+  @media screen and (min-width: $break-small) {
+    flex-direction: row;
+  }
+
+  #bdwp-search-form {
+    all: initial;
+    display: flex;
+    flex-direction: column;
+    background: $lightest-gray;
+    padding: 1em;
+    border-radius: 0.5em;
+    margin-bottom: 2em;
+
+    .bdwp-row {
+      all: initial;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &.offset-top {
+        margin-top: 1em;
+      }
+
+      .bdwp-column {
+        all: initial;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        padding: 0 1em;
+        margin-bottom: 1em;
+        justify-content: center;
+
+        @media screen and (min-width: 1000px) {
+          width: 44%;
+        }
+
+        a {
+          all: initial;
+          @include brand-font;
+          border: 3px solid $brand-gray;
+          padding: 0.2em 0.8em;
+          text-align: center;
+          align-self: center;
+          @include background-transition;
+
+          &:hover {
+            background: $brand-gray;
+            color: white;
+          }
+        }
+
+        input[type="submit"] {
+          all: initial;
+          @include brand-font;
+          align-self: center;
+          padding: 0.8em 3em;
+          background-color: black;
+          color: white;
+          cursor: pointer;
+          @include background-transition;
+
+          &:hover {
+            background: $light-gray;
+          }
+        }
+
+        .bdwp-field-group {
+          all: initial;
+          display: flex;
+          align-items: center;
+
+          label {
+            all: initial;
+            @include brand-font;
+            margin-right: 1em;
+            font-weight: bold;
+          }
+
+          &.list {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .bdwp-field {
+              margin: 5px 0;
+              width: 100%;
+            }
+          }
+
+          .bdwp-field {
+            all: initial;
+            flex-grow: 1;
+            @include brand-font;
+
+            select {
+              width: 100% !important;
+            }
+          }
+        }
+
+        .bdwp-field-description {
+          all: initial;
+          @include brand-font;
+          margin-top: 0.5em;
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+
+  #bdwp-listing-loader {
+    all: initial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include brand-font;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: auto;
+
+    &:before {
+      all: initial;
+      content: '';
+      background: url('loader.gif') center center / 3em 3em no-repeat;
+      margin-right: 1em;
+      width: 3em;
+      height: 3em;
+    }
+  }
+
+  .bdwp-found {
+    all: initial;
+    @include brand-font;
+    margin: 0 auto;
+    background: $lightest-gray;
+    padding: 1em;
+    border-radius: 1em;
+    font-weight: bold;
+    margin-bottom: 1em;
+
+    &:empty {
+      display: none;
+    }
+
+    @media screen and (min-width: 400px) {
+      padding: 1em 6em;
+    }
+  }
+
+  .bdwp-listing {
+    all: initial;
+    @include brand-font;
+
+    .bdwp-branch {
+      all: initial;
+      @include brand-font;
+      display: flex;
+      margin: 1em 0;
+      border: 1px solid $lighter-gray;
+      border-radius: 0.5em;
+      position: relative;
+      flex-direction: column;
+      min-height: 190px;
+
+      &.paid {
+        background-color: rgb(255, 244, 178);
+
+        .bdwp-main-info {
+          .bdwp-title {
+            border-color: rgba(0, 0, 0, 0.1);
+          }
+        }
+
+        .bdwp-contact-info {
+          background-color: rgba(0, 0, 0, 0.05);
+          border-color: rgba(0, 0, 0, 0.1);
+
+          ul {
+            li {
+              border-color: rgba(0, 0, 0, 0.1);
+            }
+          }
+
+          .bdwp-read-more {
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+
+      @media screen and (min-width: 900px) {
+        flex-direction: row;
+      }
+
+      .bdwp-main-info {
+        all: initial;
+        position: relative;
+        padding: 1em;
+        flex-grow: 1;
+
+        @media screen and (min-width: 900px) {
+          margin-right: 200px;
+        }
+
+        .bdwp-title {
+          all: initial;
+          display: flex;
+          border-bottom: 2px solid $lighter-gray;
+          padding-bottom: 1em;
+
+          a {
+            all: initial;
+            @include brand-font;
+            color: $brand-gray;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+          }
+        }
+
+        .bdwp-entry {
+          all: initial;
+          display: flex;
+          padding: 1em 1em 1em 0;
+          align-items: flex-start;
+          flex-direction: column;
+
+          @media screen and (min-width: 400px){
+            flex-direction: row;
+          }
+
+          img {
+            all: initial;
+            max-width: 6em;
+            height: auto;
+            margin: 0 2em 0 1em;
+          }
+
+          .bdwp-summary {
+            all: initial;
+            padding-top: 1em;
+
+            %bdwp-data {
+              all: initial;
+              display: block;
+              @include brand-font;
+              color: $brand-gray;
+              font-size: 0.9em;
+              padding-bottom: 0.3em;
+            }
+
+            .bdwp-slogan {
+              @extend %bdwp-data;
+            }
+
+            .bdwp-address {
+              @extend %bdwp-data;
+            }
+
+            .bdwp-categories {
+              @extend %bdwp-data;
+              margin-top: 0.3em;
+              font-style: italic;
+            }
+          }
+        }
+      }
+
+      .bdwp-eshop {
+        all: initial;
+        position: absolute;
+        bottom: 0.5em;
+        right: 0.5em;
+
+        a {
+          all: initial;
+          @include brand-font;
+          font-size: 0.8em;
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          @media screen and (min-width: 400px) {
+            font-size: 0.9em;
+          }
+        }
+      }
+
+      .bdwp-contact-info {
+        all: initial;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2.5em;
+        border-top: 2px solid $lighter-gray;
+        background: $lightest-gray;
+
+        @media screen and (min-width: 900px) {
+          padding-bottom: 0;
+          border-top: none;
+          position: absolute;
+          width: 200px;
+          right: 0;
+          height: 100%;
+          border-radius: 0 0.5em 0.5em 0;
+        }
+
+        i {
+          font-style: normal;
+          font-size: 1.5em;
+          margin-right: 0.5em;
+          color: $light-gray;
+          width: 20px;
+          text-align: center;
+        }
+
+        ul {
+          all: initial;
+          display: flex;
+          flex-wrap: wrap;
+          position: relative;
+          right: 1px;
+
+          @media screen and (min-width: 900px) {
+            margin-top: 0.5em;
+          }
+
+          li {
+            all: initial;
+            display: flex;
+            @include brand-font;
+            height: 2.5em;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid $lighter-gray;
+            border-left: 2px dashed $lighter-gray;
+            flex-grow: 1;
+            padding: 0 1em;
+            font-size: 0.8em;
+
+            @media screen and (min-width: 900px) {
+              justify-content: space-between;
+              width: 200px;
+              border-left: none;
+              border-bottom-style: dashed;
+
+              &:last-child {
+                border-bottom: none;
+              }
+            }
+
+            &:first-child {
+              border-left: none;
+            }
+
+            a {
+              all: initial;
+              @include brand-font;
+              cursor: pointer;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+
+            span {
+              all: initial;
+              @include brand-font;
+              word-break: break-word;
+
+              @media screen and (min-width: 900px) {
+                margin: auto;
+              }
+
+              &:empty:after {
+                all: initial;
+                @include brand-font;
+                content: '—';
+              }
+            }
+          }
+        }
+
+        .bdwp-read-more {
+          all: initial;
+          position: absolute;
+          @include brand-font;
+          bottom: 0;
+          border-radius: 0 0 0.5em 0.5em;
+          width: 100%;
+          text-align: center;
+          height: 2.5em;
+          background: $lighter-gray;
+          line-height: 2.3em;
+          vertical-align: middle;
+          box-sizing: border-box;
+          cursor: pointer;
+
+          @media screen and (min-width: 900px){
+            text-align: left;
+            padding: 0 0.7em;
+            border-radius: 0 0 0.5em 0;
+
+            i {
+              margin-right: 1.1em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bdwp-banner {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .bdwp-pagination {
+    all: initial;
+    @include brand-font;
+    margin: 2em 0;
+    margin-left: auto;
+    text-align: right;
+
+    %bdwp-pagination-btn {
+      all: initial;
+      display: inline-flex;
+      @include brand-font;
+      border: 2px solid $brand-gray;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      margin-left: 0.2em;
+      font-size: 0.85em;
+      margin-bottom: 0.2em;
+    }
+
+    a {
+      @extend %bdwp-pagination-btn;
+
+      cursor: pointer;
+      background: $brand-gray;
+      color: white;
+
+      &:hover {
+        background: $light-gray;
+      }
+    }
+
+    span {
+      @extend %bdwp-pagination-btn;
+
+      cursor: default;
+      background: $lighter-gray;
+    }
+  }
+}
+
+/**
+ * Branch page styles
+ */
+
+.bdwp-branch-wrapper {
+  @extend %bdwp-wrapper;
+
+  background: $lightest-gray;
+
+  %link {
+    all: initial;
+    @include brand-font;
+    color: $brand-blue;
+    @include background-transition;
+
+    &:hover {
+      color: $brand-gray;
+    }
+  }
+
+  a {
+    @extend %link;
+  }
+
+  .long {
+    display: none;
+    @media screen and (min-width: $break-small) {
+      display: inherit;
+    }
+  }
+
+  ul {
+    all: initial;
+    @include brand-font;
+    padding: 0;
+
+    li {
+      all: initial;
+      @include brand-font;
+    }
+  }
+
+  .bdwp-branch-header {
+    all: initial;
+    @include brand-font;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    top: 1px;
+    z-index: 1;
+    margin-left: 1em;
+
+    %span {
+      display: none;
+
+      @media screen and (min-width: $break-small) {
+        display: inline;
+      }
+
+      &.fa {
+        display: inline;
+        font-family: FontAwesome;
+
+        @media screen and (min-width: $break-small) {
+          display: none !important;
+        }
+      }
+    }
+
+    a {
+      span {
+        @extend %link;
+        @extend %span;
+
+        &:before {
+          font-size: 2em;
+        }
+      }
+    }
+
+    span {
+      @extend %span;
+    }
+
+    .bdwp-branch-thumbnail {
+      all: initial;
+      position: relative;
+      z-index: 1000;
+      overflow: hidden;
+      border-style: solid;
+      border-width: 1px 1px 0 1px;
+      border-color: $lighter-gray;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: 1px solid white;
+
+      .bdwp-branch-img-wrapper {
+        all: initial;
+        display: block;
+        max-height: 6em;
+        border-style: solid;
+        border-width: 6px 6px 0px 6px;
+        border-color: transparent;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        @include border-image-gradient(to bottom, #e8e8e8, rgba(0, 0, 0, 0));
+        background: white;
+        border-image-slice: 1;
+
+        img {
+          all: initial;
+          max-height: 6em;
+          width: auto;
+        }
+      }
+    }
+
+    menu {
+      all: initial;
+      display: flex;
+      margin: 0;
+      margin-right: 0.75em;
+      padding: 0;
+
+      menuitem {
+        all: initial;
+        @include brand-font;
+        display: inline-block;
+        margin-left: 1em;
+        background-color: $brand-gray;
+        color: white;
+        padding: 0 0.75em;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 2em;
+        height: 2em;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $light-gray;
+        }
+
+        &.active {
+          background-color: #4ca7d6;
+          border-color: #3cb7f0;
+        }
+      }
+    }
+
+    a {
+      all: initial;
+      @include brand-font;
+      font-size: 2em;
+      font-weight: bolder;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      @media screen and (min-width: $break-small) {
+        font-size: 1em;
+      }
+    }
+  }
+
+  .bdwp-branch-content {
+    all: initial;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0.5em;
+    border: 1px solid $lighter-gray;
+
+    @media screen and (min-width: $break-small) {
+      flex-direction: row;
+    }
+
+    span.fa {
+      margin-right: 0.4em;
+    }
+
+    #bdwp-map-container {
+      all: initial;
+      display: block;
+      width: 100%;
+      background-color: $lightest-gray;
+    }
+
+    #bdwp-branch-map-container {
+      @extend #bdwp-map-container;
+
+      height: 31em;
+    }
+
+    #bdwp-branch-mini-map-container {
+      @extend #bdwp-map-container;
+
+      height: 15em;
+    }
+
+    .bdwp-content-block {
+      all: initial;
+      @include brand-font;
+      padding: 0.5em;
+      word-break: break-word;
+
+      h1 {
+        all: initial;
+        @include brand-font;
+        margin: 0 0 0.1em;
+        padding: 0;
+        color: $brand-gray;
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+
+      u1 {
+        all: initial;
+        margin: 0;
+        padding: 0.6em 0;
+      }
+
+      em {
+        all: initial;
+        @include brand-font;
+        display: block;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 1.1em;
+        padding-bottom: 1em;
+      }
+
+      hr {
+        all: initial;
+        display: block;
+        margin-top: 0.5em;
+        border-top: solid 1px $lighter-gray;
+      }
+
+      .inline {
+        display: inline;
+      }
+
+      .bdwp-branch-block-caption {
+        all: initial;
+        @include brand-font;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        padding-bottom: 0.8em;
+        flex-wrap: wrap;
+
+        .bdwp-branch-phone {
+          all: initial;
+          @include brand-font;
+          font-weight: bold;
+          margin-left: auto;
+          align-self: center;
+        }
+
+        .fa {
+          color: $brand-blue;
+          &.black {
+            color: $brand-gray;
+          }
+        }
+      }
+    }
+
+    .eshop_link {
+      all: initial;
+      display: flex;
+
+      a {
+        margin-left: auto;
+        margin-right: 0.5em;
+        text-align: right;
+        font-size: 0.9em;
+      }
+    }
+
+    .bdwp-branch-info-block {
+      @extend .bdwp-content-block;
+
+      address {
+        all: initial;
+        @include brand-font;
+        display: flex;
+
+        a {
+          margin-left: auto;
+          cursor: pointer;
+        }
+
+        ul {
+          li {
+            all: initial;
+            @include brand-font;
+            display: block;
+            padding-bottom: 0.4em;
+
+            .fa {
+              width: 1em;
+              text-align: right;
+            }
+
+            a {
+              cursor: pointer;
+            }
+
+            .item {
+              all: initial;
+              @include brand-font;
+              padding-bottom: 0.2em;
+
+              img {
+                display: inline-block;
+                max-height: 2em;
+                line-height: 2em;
+                vertical-align: middle;
+              }
+
+              .bdwp-tooltip{
+                all: initial;
+                display: none;
+              }
+            }
+
+            .inline {
+              margin-right: 2em;
+              font-weight: bold;
+            }
+
+          }
+        }
+      }
+
+      .bdwp-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .bdwp-slide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid $lighter-gray;
+          width: 155px;
+          height: 140px;
+          padding: 30px 10px;
+          margin: 2px;
+
+          img {
+            max-height: 100%;
+            max-width: 100%;
+          }
+
+          &:hover {
+            background-color: $lightest-gray;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .bdwp-branch-widget {
+      @extend .bdwp-content-block;
+
+      .bdwp-branch-block-caption {
+        all: initial;
+        display: flex;
+        @include brand-font;
+        font-weight: bold;
+        background-color: $lighter-gray;
+        padding: 0.5em;
+
+        a {
+          margin-left: auto;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .bdwp-branch-block-content {
+        all: initial;
+        display: block;
+        background-color: $lightest-gray;
+        padding: 0.5em;
+
+        .bdwp-gallery {
+          all: initial;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          .bdwp-slide {
+            all: initial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $lighter-gray;
+            width: 110px;
+            height: 110px;
+            margin: 5px;
+
+            img {
+              all: initial;
+              max-height: 100%;
+              max-width: 100%;
+            }
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .weather-header {
+          all: initial;
+          display: flex;
+
+          .weather-tab {
+            all: initial;
+            @include brand-font;
+            padding: 0.4em;
+            font-weight: bold;
+            cursor: pointer;
+            &.active {
+              background-color: white;
+            }
+          }
+        }
+
+        .weather-pane {
+          all: initial;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: white;
+          padding: 0.3em;
+          flex-wrap: wrap;
+
+          img {
+            all: initial;
+            max-width: 45%;
+            height: auto;
+          }
+
+          ul {
+            all: initial;
+
+            li {
+              all: initial;
+              @include brand-font;
+              display: flex;
+              justify-content: flex-end;
+
+              &.weather-wind {
+                font-size: 1.3em;
+              }
+            }
+          }
+
+          .weather-detail {
+            all: initial;
+            @include brand-font;
+            flex-basis: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1em 0;
+
+            .weather-day {
+              all: initial;
+              @include brand-font;
+              text-align: center;
+              font-size: 0.7em;
+              font-weight: bold;
+            }
+
+            .weather-thumbnail {
+              img {
+                all: initial;
+                min-width: 100%;
+                height: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .bdwp-branch-panel {
+      @extend .bdwp-content-block;
+
+      margin: 0.5em;
+      background-color: $lightest-gray;
+
+      .bdwp-branch-block-caption {
+        display: inline;
+        margin: 0;
+      }
+
+      a {
+        .share-btn {
+          all: initial;
+          width: 1.7em;
+          line-height: 1.3em;
+          text-align: center;
+          height: 1.3em;
+          font-size: 1.3em;
+          color: $lighter-gray;
+          margin-left: 4px;
+          margin-bottom: 4px;
+
+          &:before {
+            font-family: FontAwesome;
+          }
+
+          &.facebook {
+            background-color: #3b5998;
+          }
+          &.google {
+            background-color: #dd4b39;
+          }
+          &.twitter {
+            background-color: #1da1f2;
+          }
+          &.linkedin {
+            background-color: #0077b5;
+          }
+          &.bookmark {
+            background-color: #ff9900;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Mail form styles
+ */
+
+#bdwp-mail-form {
+  all: initial;
+  @include brand-font;
+  padding: 2em;
+  background: white;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 650px) {
+    max-width: 600px;
+  }
+
+  h1 {
+    all: initial;
+    @include brand-font;
+    color: $brand-gray;
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    margin: 0.5em 0;
+  }
+
+  .bdwp-modal-close {
+    all: initial;
+    @include brand-font;
+    margin-left: auto;
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  .bdwp-email-form-message {
+    all: initial;
+    @include brand-font;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 1em;
+    background: $lightest-gray;
+
+    &:empty {
+      display: none;
+    }
+
+    &.failed {
+      border: 2px solid red;
+    }
+
+    &.success {
+      border: 2px solid green;
+    }
+  }
+
+  .bdwp-email-form-loader {
+    all: initial;
+    display: none;
+    margin: 0 auto 1em;
+    height: 3em;
+    width: 3em;
+    background: url(loader.gif) center center / 3em 3em no-repeat;
+  }
+
+  .bdwp-field-group {
+    all: initial;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &.vertical {
+      @media screen and (min-width: 650px) {
+        flex-direction: row;
+      }
+    }
+
+    .bdwp-field-object {
+      all: initial;
+      padding: 0 0.5em;
+      margin-bottom: 1em;
+
+      .bdwp-field {
+        all: initial;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        @media screen and (min-width: 650px) {
+          flex-direction: row;
+          width: initial;
+
+          &.vertical {
+            flex-direction: column;
+
+            label {
+              margin-right: auto;
+            }
+          }
+
+          label {
+            margin-right: 0;
+          }
+
+          input {
+            width: initial;
+          }
+        }
+
+        label {
+          all: initial;
+          @include brand-font;
+          font-size: 1em;
+          font-weight: bold;
+          padding: 0.5em 1em 0.5em 0;
+          margin-right: auto;
+        }
+
+        input {
+          all: initial;
+          height: 2em;
+          border: 1px solid $brand-gray;
+          border-radius: 0.5em;
+          @include brand-font;
+          font-size: 1em;
+          padding: 0.5em;
+          flex-grow: 1;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        textarea {
+          all: initial;
+          @include brand-font;
+          border: 1px solid $brand-gray;
+          border-radius: 0.5em;
+          padding: 0.5em;
+          height: 8em;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+
+      .bdwp-field-error {
+        all: initial;
+        display: block;
+        @include brand-font;
+        font-size: 0.9em;
+        padding: 0.1em 0.4em 0 0.4em;
+        margin-top: 5px;
+        color: $brand-gray;
+        border-top: 2px solid red;
+
+        &:empty {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .bdwp-btn-group {
+    all: initial;
+    display: flex;
+    justify-content: flex-end;
+
+    .bdwp-btn {
+      all: initial;
+      @include brand-font;
+      margin: 0 1em;
+      border: none;
+      border-radius: 0;
+      font-size: 1em;
+      font-weight: bold;
+      line-height: 2.5em;
+      height: 2.5em;
+      width: 7.5em;
+      padding: 0;
+      text-align: center;
+      @include background-transition;
+      cursor: pointer;
+
+      &.btn-default {
+        background: $lightest-gray;
+        border: 3px solid $brand-gray;
+        color: $brand-gray;
+        box-sizing: border-box;
+        line-height: 0;
+
+        &:hover {
+          background: $brand-gray;
+          color: white;
+        }
+      }
+
+      &.btn-primary {
+        background: $brand-gray;
+        color: white;
+
+        &:hover {
+          background: $light-gray;
+        }
+      }
+    }
+  }
+
+  .bdwp-form-modal {
+    all: initial;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em;
+
+    .bdwp-btn-group {
+      justify-content: center;
+    }
+  }
+
+  .margin-left {
+    margin-left: 2em;
+  }
+}
+
+.select2-container {
+  width: 100% !important;
+
+  ul li {
+    margin-left: 0;
+  }
+}

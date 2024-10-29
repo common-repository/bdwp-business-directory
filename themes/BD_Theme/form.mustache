@@ -1,0 +1,51 @@
+<form {{mail-form-attrs}} id="{{mail-form-id}}" hidden>
+    {{&form-data}}
+    <a {{modal-close-attrs}} class="bdwp-modal-close">X</a>
+    <h1>Φόρμα επικοινωνίας</h1>
+    <div {{header-message-attrs}} class="bdwp-email-form-message">Παρακαλώ, συμπληρώστε την ακόλουθη φόρμα</div>
+    <div {{loader-attrs}} class="bdwp-email-form-loader"></div>
+    <div {{form-content-attrs}}>
+        <div class="bdwp-field-group vertical">
+            <div class="bdwp-field-object">
+                <div class="bdwp-field">
+                    <label {{name-label-attrs}}>Όνομα</label>
+                    <input {{name-field-attrs}} class="bdwp-form-control" />
+                </div>
+                <div {{name-error-attrs}} class="bdwp-field-error"></div>
+            </div>
+            <div class="bdwp-field-object">
+                <div class="bdwp-field">
+                    <label {{email-label-attrs}}>Email</label>
+                    <input {{email-field-attrs}} class="bdwp-form-control" />
+                </div>
+                <div {{email-error-attrs}} class="bdwp-field-error"></div>
+            </div>
+        </div>
+        <div class="bdwp-field-group">
+            <div class="bdwp-field-object">
+                <div class="bdwp-field">
+                    <label {{subject-label-attrs}}>Θέμα</label>
+                    <input {{subject-field-attrs}} class="bdwp-form-control" />
+                </div>
+                <div {{subject-error-attrs}} class="bdwp-field-error"></div>
+            </div>
+            <div class="bdwp-field-object">
+                <div class="bdwp-field vertical">
+                    <label {{message-label-attrs}}>Το μήνυμά σας</label>
+                    <textarea {{message-field-attrs}} class="bdwp-form-control"></textarea>
+                </div>
+                <div {{message-error-attrs}} class="bdwp-field-error"></div>
+            </div>
+        </div>
+        <div class="bdwp-btn-group">
+            <button {{modal-close-attrs}} class="bdwp-btn btn-default" role="button">Ακύρωση</button>
+            <input type="submit" class="bdwp-btn btn-primary" value="Υποβολή" />
+        </div>
+    </div>
+    <div {{form-modal-attrs}} class="bdwp-form-modal">
+        <div {{modal-message-attrs}} class="bdwp-email-form-message"></div>
+        <div class="bdwp-btn-group">
+            <div {{modal-ok-btn-attrs}} class="bdwp-btn btn-primary">Εντάξει</div>
+        </div>
+    </div>
+</form>

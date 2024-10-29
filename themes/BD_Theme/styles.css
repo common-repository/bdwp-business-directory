@@ -1,0 +1,944 @@
+@charset "UTF-8";
+/**
+ * BD Theme
+ */
+.bdwp-map-container {
+  position: relative; }
+  .bdwp-map-container:before {
+    padding-top: 100%;
+    display: block;
+    content: ''; }
+  .bdwp-map-container .bdwp-map-container-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .bdwp-map-container .bdwp-map-canvas {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    font-family: inherit; }
+
+.bdwp-listing-wrapper, .bdwp-branch-wrapper {
+  all: initial;
+  display: flex;
+  flex-direction: column;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  justify-content: space-between;
+  font-size: 14px;
+  max-width: 80em;
+  margin: 1em auto;
+  padding: 1em;
+  color: #333; }
+  .bdwp-listing-wrapper .bdwp-content, .bdwp-branch-wrapper .bdwp-content, .bdwp-listing-wrapper .bdwp-sidebar, .bdwp-branch-wrapper .bdwp-sidebar {
+    all: initial;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em; }
+  @media screen and (min-width: 41em) {
+    .bdwp-listing-wrapper .bdwp-content, .bdwp-branch-wrapper .bdwp-content {
+      flex-grow: 1; }
+    .bdwp-listing-wrapper .bdwp-sidebar, .bdwp-branch-wrapper .bdwp-sidebar {
+      width: 350px;
+      min-width: 350px; }
+      .bdwp-listing-wrapper .bdwp-sidebar:empty, .bdwp-branch-wrapper .bdwp-sidebar:empty {
+        display: none; } }
+  .bdwp-listing-wrapper .bdwp-map-container, .bdwp-branch-wrapper .bdwp-map-container {
+    position: relative; }
+    .bdwp-listing-wrapper .bdwp-map-container:before, .bdwp-branch-wrapper .bdwp-map-container:before {
+      padding-top: 100%;
+      display: block;
+      content: ''; }
+    .bdwp-listing-wrapper .bdwp-map-container .bdwp-map-container-inner, .bdwp-branch-wrapper .bdwp-map-container .bdwp-map-container-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    .bdwp-listing-wrapper .bdwp-map-container .bdwp-map-canvas, .bdwp-branch-wrapper .bdwp-map-container .bdwp-map-canvas {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      font-family: inherit; }
+
+.bdwp-technical-issues-warning, .bdwp-branch-missing-warning {
+  all: initial;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  max-width: 700px;
+  margin: auto;
+  font-size: 2em;
+  background: #e8e8e8;
+  border-radius: 1em;
+  padding: 1em;
+  text-align: center;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  border: 30px solid transparent;
+  background-clip: padding-box; }
+
+.bdwp-branch-missing-warning a {
+  margin-top: 1em;
+  text-decoration: underline; }
+
+/**
+ * Listing page styles
+ */
+@media screen and (min-width: 41em) {
+  .bdwp-listing-wrapper {
+    flex-direction: row; } }
+
+.bdwp-listing-wrapper #bdwp-search-form {
+  all: initial;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 2em; }
+  .bdwp-listing-wrapper #bdwp-search-form .bdwp-row {
+    all: initial;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .bdwp-listing-wrapper #bdwp-search-form .bdwp-row.offset-top {
+      margin-top: 1em; }
+    .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column {
+      all: initial;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      padding: 0 1em;
+      margin-bottom: 1em;
+      justify-content: center; }
+      @media screen and (min-width: 1000px) {
+        .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column {
+          width: 44%; } }
+      .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column a {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        border: 3px solid #333;
+        padding: 0.2em 0.8em;
+        text-align: center;
+        align-self: center;
+        transition: background-color 0.5s ease; }
+        .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column a:hover {
+          background: #333;
+          color: white; }
+      .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column input[type="submit"] {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        align-self: center;
+        padding: 0.8em 3em;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.5s ease; }
+        .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column input[type="submit"]:hover {
+          background: #5F5F5F; }
+      .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-group {
+        all: initial;
+        display: flex;
+        align-items: center; }
+      .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-group.list {
+        flex-direction: column;
+        align-items: flex-start; }
+        .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-group label {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          margin-right: 1em;
+          font-weight: bold; }
+        .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-group .bdwp-field {
+          all: initial;
+          flex-grow: 1;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          position: relative; }
+        .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-group.list .bdwp-field {
+          margin: 5px 0;
+          width: 100%; }
+          .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-group .bdwp-field select {
+            width: 100% !important; }
+      .bdwp-listing-wrapper #bdwp-search-form .bdwp-row .bdwp-column .bdwp-field-description {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        margin-top: 0.5em;
+        font-size: 0.9em; }
+
+.bdwp-listing-wrapper #bdwp-listing-loader {
+  all: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: auto; }
+  .bdwp-listing-wrapper #bdwp-listing-loader:before {
+    all: initial;
+    content: '';
+    background: url("loader.gif") center center/3em 3em no-repeat;
+    margin-right: 1em;
+    width: 3em;
+    height: 3em; }
+
+.bdwp-listing-wrapper .bdwp-found {
+  all: initial;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 0 auto;
+  background: #f7f7f7;
+  padding: 1em;
+  border-radius: 1em;
+  font-weight: bold;
+  margin-bottom: 1em; }
+  .bdwp-listing-wrapper .bdwp-found:empty {
+    display: none; }
+  @media screen and (min-width: 400px) {
+    .bdwp-listing-wrapper .bdwp-found {
+      padding: 1em 6em; } }
+
+.bdwp-listing-wrapper .bdwp-listing {
+  all: initial;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif; }
+  .bdwp-listing-wrapper .bdwp-listing .bdwp-branch {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    display: flex;
+    margin: 1em 0;
+    border: 1px solid #e8e8e8;
+    border-radius: 0.5em;
+    position: relative;
+    flex-direction: column;
+    min-height: 190px; }
+    .bdwp-listing-wrapper .bdwp-listing .bdwp-branch.paid {
+      background-color: #fff4b2; }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch.paid .bdwp-main-info .bdwp-title {
+        border-color: rgba(0, 0, 0, 0.1); }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch.paid .bdwp-contact-info {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-color: rgba(0, 0, 0, 0.1); }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch.paid .bdwp-contact-info ul li {
+          border-color: rgba(0, 0, 0, 0.1); }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch.paid .bdwp-contact-info .bdwp-read-more {
+          background-color: rgba(0, 0, 0, 0.05); }
+    @media screen and (min-width: 900px) {
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch {
+        flex-direction: row; } }
+    .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info {
+      all: initial;
+      position: relative;
+      padding: 1em;
+      flex-grow: 1; }
+      @media screen and (min-width: 900px) {
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info {
+          margin-right: 200px; } }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-title {
+        all: initial;
+        display: flex;
+        border-bottom: 2px solid #e8e8e8;
+        padding-bottom: 1em; }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-title a {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          color: #333;
+          font-weight: bold;
+          text-transform: uppercase;
+          cursor: pointer; }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry {
+        all: initial;
+        display: flex;
+        padding: 1em 1em 1em 0;
+        align-items: flex-start;
+        flex-direction: column; }
+        @media screen and (min-width: 400px) {
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry {
+            flex-direction: row; } }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry img {
+          all: initial;
+          max-width: 6em;
+          height: auto;
+          margin: 0 2em 0 1em; }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry .bdwp-summary {
+          all: initial;
+          padding-top: 1em; }
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry .bdwp-summary .bdwp-slogan, .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry .bdwp-summary .bdwp-address, .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry .bdwp-summary .bdwp-categories {
+            all: initial;
+            display: block;
+            font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+            color: #333;
+            font-size: 0.9em;
+            padding-bottom: 0.3em; }
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-main-info .bdwp-entry .bdwp-summary .bdwp-categories {
+            margin-top: 0.3em;
+            font-style: italic; }
+    .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-eshop {
+      all: initial;
+      position: absolute;
+      bottom: 0.5em;
+      right: 0.5em; }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-eshop a {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        font-size: 0.8em;
+        cursor: pointer; }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-eshop a:hover {
+          text-decoration: underline; }
+        @media screen and (min-width: 400px) {
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-eshop a {
+            font-size: 0.9em; } }
+    .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info {
+      all: initial;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 2.5em;
+      border-top: 2px solid #e8e8e8;
+      background: #f7f7f7; }
+      @media screen and (min-width: 900px) {
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info {
+          padding-bottom: 0;
+          border-top: none;
+          position: absolute;
+          width: 200px;
+          right: 0;
+          height: 100%;
+          border-radius: 0 0.5em 0.5em 0; } }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info i {
+        font-style: normal;
+        font-size: 1.5em;
+        margin-right: 0.5em;
+        color: #5F5F5F;
+        width: 20px;
+        text-align: center; }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul {
+        all: initial;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        right: 1px; }
+        @media screen and (min-width: 900px) {
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul {
+            margin-top: 0.5em; } }
+        .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li {
+          all: initial;
+          display: flex;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          height: 2.5em;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 2px solid #e8e8e8;
+          border-left: 2px dashed #e8e8e8;
+          flex-grow: 1;
+          padding: 0 1em;
+          font-size: 0.8em; }
+          @media screen and (min-width: 900px) {
+            .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li {
+              justify-content: space-between;
+              width: 200px;
+              border-left: none;
+              border-bottom-style: dashed; }
+              .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li:last-child {
+                border-bottom: none; } }
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li:first-child {
+            border-left: none; }
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li a {
+            all: initial;
+            font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+            cursor: pointer; }
+            .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li a:hover {
+              text-decoration: underline; }
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li span {
+            all: initial;
+            font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+            word-break: break-word; }
+            @media screen and (min-width: 900px) {
+              .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li span {
+                margin: auto; } }
+            .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info ul li span:empty:after {
+              all: initial;
+              font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+              content: '—'; }
+      .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info .bdwp-read-more {
+        all: initial;
+        position: absolute;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        bottom: 0;
+        border-radius: 0 0 0.5em 0.5em;
+        width: 100%;
+        text-align: center;
+        height: 2.5em;
+        background: #e8e8e8;
+        line-height: 2.3em;
+        vertical-align: middle;
+        box-sizing: border-box;
+        cursor: pointer; }
+        @media screen and (min-width: 900px) {
+          .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info .bdwp-read-more {
+            text-align: left;
+            padding: 0 0.7em;
+            border-radius: 0 0 0.5em 0; }
+            .bdwp-listing-wrapper .bdwp-listing .bdwp-branch .bdwp-contact-info .bdwp-read-more i {
+              margin-right: 1.1em; } }
+
+.bdwp-listing-wrapper .bdwp-banner {
+  width: 100%; }
+  .bdwp-listing-wrapper .bdwp-banner img {
+    width: 100%;
+    height: auto; }
+
+.bdwp-listing-wrapper .bdwp-pagination {
+  all: initial;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em 0;
+  margin-left: auto;
+  text-align: right; }
+  .bdwp-listing-wrapper .bdwp-pagination a, .bdwp-listing-wrapper .bdwp-pagination span {
+    all: initial;
+    display: inline-flex;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    border: 2px solid #333;
+    border-radius: 4px;
+    padding: 0.2em 0.4em;
+    margin-left: 0.2em;
+    font-size: 0.85em;
+    margin-bottom: 0.2em; }
+  .bdwp-listing-wrapper .bdwp-pagination a {
+    cursor: pointer;
+    background: #333;
+    color: white; }
+    .bdwp-listing-wrapper .bdwp-pagination a:hover {
+      background: #5F5F5F; }
+  .bdwp-listing-wrapper .bdwp-pagination span {
+    cursor: default;
+    background: #e8e8e8; }
+
+/**
+ * Branch page styles
+ */
+.bdwp-branch-wrapper {
+  background: #f7f7f7; }
+  .bdwp-branch-wrapper a, .bdwp-branch-wrapper .bdwp-branch-header a span {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    color: #4ca7d6;
+    transition: background-color 0.5s ease; }
+    .bdwp-branch-wrapper a:hover, .bdwp-branch-wrapper .bdwp-branch-header a span:hover {
+      color: #333; }
+  .bdwp-branch-wrapper .long {
+    display: none; }
+    @media screen and (min-width: 41em) {
+      .bdwp-branch-wrapper .long {
+        display: inherit; } }
+  .bdwp-branch-wrapper ul {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    padding: 0; }
+    .bdwp-branch-wrapper ul li {
+      all: initial;
+      font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif; }
+  .bdwp-branch-wrapper .bdwp-branch-header {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    top: 1px;
+    z-index: 1;
+    margin-left: 1em; }
+    .bdwp-branch-wrapper .bdwp-branch-header a span, .bdwp-branch-wrapper .bdwp-branch-header span {
+      display: none; }
+      @media screen and (min-width: 41em) {
+        .bdwp-branch-wrapper .bdwp-branch-header a span, .bdwp-branch-wrapper .bdwp-branch-header span {
+          display: inline; } }
+      .bdwp-branch-wrapper .bdwp-branch-header span.fa {
+        display: inline;
+        font-family: FontAwesome; }
+        @media screen and (min-width: 41em) {
+          .bdwp-branch-wrapper .bdwp-branch-header a span.fa, .bdwp-branch-wrapper .bdwp-branch-header span.fa {
+            display: none !important; } }
+    .bdwp-branch-wrapper .bdwp-branch-header a span:before {
+      font-size: 2em; }
+    .bdwp-branch-wrapper .bdwp-branch-header .bdwp-branch-thumbnail {
+      all: initial;
+      position: relative;
+      z-index: 1000;
+      overflow: hidden;
+      border-style: solid;
+      border-width: 1px 1px 0 1px;
+      border-color: #e8e8e8;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: 1px solid white; }
+      .bdwp-branch-wrapper .bdwp-branch-header .bdwp-branch-thumbnail .bdwp-branch-img-wrapper {
+        all: initial;
+        display: block;
+        max-height: 6em;
+        border-style: solid;
+        border-width: 6px 6px 0px 6px;
+        border-color: transparent;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        -webkit-border-image: linear-gradient(to bottom, #e8e8e8, transparent) 0 100%;
+        -moz-border-image: linear-gradient(to bottom, #e8e8e8, transparent) 0 100%;
+        -o-border-image: linear-gradient(to bottom, #e8e8e8, transparent) 0 100%;
+        border-image: linear-gradient(to bottom, #e8e8e8, transparent) 0 100%;
+        background: white;
+        border-image-slice: 1; }
+        .bdwp-branch-wrapper .bdwp-branch-header .bdwp-branch-thumbnail .bdwp-branch-img-wrapper img {
+          all: initial;
+          max-height: 6em;
+          width: auto; }
+    .bdwp-branch-wrapper .bdwp-branch-header menu {
+      all: initial;
+      display: flex;
+      margin: 0;
+      margin-right: 0.75em;
+      padding: 0; }
+      .bdwp-branch-wrapper .bdwp-branch-header menu menuitem {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        display: inline-block;
+        margin-left: 1em;
+        background-color: #333;
+        color: white;
+        padding: 0 0.75em;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 2em;
+        height: 2em;
+        cursor: pointer; }
+        .bdwp-branch-wrapper .bdwp-branch-header menu menuitem:hover {
+          background-color: #5F5F5F; }
+        .bdwp-branch-wrapper .bdwp-branch-header menu menuitem.active {
+          background-color: #4ca7d6;
+          border-color: #3cb7f0; }
+    .bdwp-branch-wrapper .bdwp-branch-header a {
+      all: initial;
+      font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+      font-size: 2em;
+      font-weight: bolder;
+      position: absolute;
+      right: 0;
+      top: 0; }
+      @media screen and (min-width: 41em) {
+        .bdwp-branch-wrapper .bdwp-branch-header a {
+          font-size: 1em; } }
+  .bdwp-branch-wrapper .bdwp-branch-content {
+    all: initial;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0.5em;
+    border: 1px solid #e8e8e8; }
+    @media screen and (min-width: 41em) {
+      .bdwp-branch-wrapper .bdwp-branch-content {
+        flex-direction: row; } }
+    .bdwp-branch-wrapper .bdwp-branch-content span.fa {
+      margin-right: 0.4em; }
+    .bdwp-branch-wrapper .bdwp-branch-content #bdwp-map-container, .bdwp-branch-wrapper .bdwp-branch-content #bdwp-branch-map-container, .bdwp-branch-wrapper .bdwp-branch-content #bdwp-branch-mini-map-container {
+      all: initial;
+      display: block;
+      width: 100%;
+      background-color: #f7f7f7; }
+    .bdwp-branch-wrapper .bdwp-branch-content #bdwp-branch-map-container {
+      height: 31em; }
+    .bdwp-branch-wrapper .bdwp-branch-content #bdwp-branch-mini-map-container {
+      height: 15em; }
+    .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel {
+      all: initial;
+      font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+      padding: 0.5em;
+      word-break: break-word; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block h1, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block h1, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget h1, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel h1 {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        margin: 0 0 0.1em;
+        padding: 0;
+        color: #333;
+        font-size: 1.4em;
+        font-weight: bold; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block u1, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block u1, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget u1, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel u1 {
+        all: initial;
+        margin: 0;
+        padding: 0.6em 0; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block em, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block em, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget em, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel em {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        display: block;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 1.1em;
+        padding-bottom: 1em; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block hr, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block hr, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget hr, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel hr {
+        all: initial;
+        display: block;
+        margin-top: 0.5em;
+        border-top: solid 1px #e8e8e8; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block .inline, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .inline, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .inline, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel .inline {
+        display: inline; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block .bdwp-branch-block-caption, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-branch-block-caption, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel .bdwp-branch-block-caption {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        padding-bottom: 0.8em;
+        flex-wrap: wrap; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block .bdwp-branch-block-caption .bdwp-branch-phone, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-branch-block-caption .bdwp-branch-phone, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption .bdwp-branch-phone, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel .bdwp-branch-block-caption .bdwp-branch-phone {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          font-weight: bold;
+          margin-left: auto;
+          align-self: center; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block .bdwp-branch-block-caption .fa, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-branch-block-caption .fa, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption .fa, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel .bdwp-branch-block-caption .fa {
+          color: #4ca7d6; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-content-block .bdwp-branch-block-caption .fa.black, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-branch-block-caption .fa.black, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption .fa.black, .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel .bdwp-branch-block-caption .fa.black {
+            color: #333; }
+    .bdwp-branch-wrapper .bdwp-branch-content .eshop_link {
+      all: initial;
+      display: flex; }
+      .bdwp-branch-wrapper .bdwp-branch-content .eshop_link a {
+        margin-left: auto;
+        margin-right: 0.5em;
+        text-align: right;
+        font-size: 0.9em; }
+    .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address {
+      all: initial;
+      font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+      display: flex; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address a {
+        margin-left: auto;
+        cursor: pointer; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li {
+        all: initial;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        display: block;
+        padding-bottom: 0.4em; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li .fa {
+          width: 1em;
+          text-align: right; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li a {
+          cursor: pointer; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li .item {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          padding-bottom: 0.2em; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li .item img {
+            display: inline-block;
+            max-height: 2em;
+            line-height: 2em;
+            vertical-align: middle; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li .item .bdwp-tooltip {
+            all: initial;
+            display: none; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block address ul li .inline {
+          margin-right: 2em;
+          font-weight: bold; }
+    .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-gallery .bdwp-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #e8e8e8;
+        width: 155px;
+        height: 140px;
+        padding: 30px 10px;
+        margin: 2px; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-gallery .bdwp-slide img {
+          max-height: 100%;
+          max-width: 100%; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-info-block .bdwp-gallery .bdwp-slide:hover {
+          background-color: #f7f7f7;
+          cursor: pointer; }
+    .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption {
+      all: initial;
+      display: flex;
+      font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+      font-weight: bold;
+      background-color: #e8e8e8;
+      padding: 0.5em; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption a {
+        margin-left: auto; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-caption a:hover {
+          cursor: pointer; }
+    .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content {
+      all: initial;
+      display: block;
+      background-color: #f7f7f7;
+      padding: 0.5em; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .bdwp-gallery {
+        all: initial;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .bdwp-gallery .bdwp-slide {
+          all: initial;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #e8e8e8;
+          width: 110px;
+          height: 110px;
+          margin: 5px; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .bdwp-gallery .bdwp-slide img {
+            all: initial;
+            max-height: 100%;
+            max-width: 100%; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .bdwp-gallery .bdwp-slide:hover {
+            cursor: pointer; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-header {
+        all: initial;
+        display: flex; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-header .weather-tab {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          padding: 0.4em;
+          font-weight: bold;
+          cursor: pointer; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-header .weather-tab.active {
+            background-color: white; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane {
+        all: initial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 0.3em;
+        flex-wrap: wrap; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane img {
+          all: initial;
+          max-width: 45%;
+          height: auto; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane ul {
+          all: initial; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane ul li {
+            all: initial;
+            font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+            display: flex;
+            justify-content: flex-end; }
+            .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane ul li.weather-wind {
+              font-size: 1.3em; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane .weather-detail {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          flex-basis: 20%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 1em 0; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane .weather-detail .weather-day {
+            all: initial;
+            font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+            text-align: center;
+            font-size: 0.7em;
+            font-weight: bold; }
+          .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-widget .bdwp-branch-block-content .weather-pane .weather-detail .weather-thumbnail img {
+            all: initial;
+            min-width: 100%;
+            height: auto; }
+    .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel {
+      margin: 0.5em;
+      background-color: #f7f7f7; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel .bdwp-branch-block-caption {
+        display: inline;
+        margin: 0; }
+      .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn {
+        all: initial;
+        width: 1.7em;
+        line-height: 1.3em;
+        text-align: center;
+        height: 1.3em;
+        font-size: 1.3em;
+        color: #e8e8e8;
+        margin-left: 4px;
+        margin-bottom: 4px; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn:before {
+          font-family: FontAwesome; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn.facebook {
+          background-color: #3b5998; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn.google {
+          background-color: #dd4b39; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn.twitter {
+          background-color: #1da1f2; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn.linkedin {
+          background-color: #0077b5; }
+        .bdwp-branch-wrapper .bdwp-branch-content .bdwp-branch-panel a .share-btn.bookmark {
+          background-color: #ff9900; }
+
+/**
+ * Mail form styles
+ */
+#bdwp-mail-form {
+  all: initial;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  padding: 2em;
+  background: white;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column; }
+  @media screen and (min-width: 650px) {
+    #bdwp-mail-form {
+      max-width: 600px; } }
+  #bdwp-mail-form h1 {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    color: #333;
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    margin: 0.5em 0; }
+  #bdwp-mail-form .bdwp-modal-close {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    margin-left: auto;
+    font-size: 2em;
+    cursor: pointer; }
+  #bdwp-mail-form .bdwp-email-form-message {
+    all: initial;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 1em;
+    background: #f7f7f7; }
+    #bdwp-mail-form .bdwp-email-form-message:empty {
+      display: none; }
+    #bdwp-mail-form .bdwp-email-form-message.failed {
+      border: 2px solid red; }
+    #bdwp-mail-form .bdwp-email-form-message.success {
+      border: 2px solid green; }
+  #bdwp-mail-form .bdwp-email-form-loader {
+    all: initial;
+    display: none;
+    margin: 0 auto 1em;
+    height: 3em;
+    width: 3em;
+    background: url(loader.gif) center center/3em 3em no-repeat; }
+  #bdwp-mail-form .bdwp-field-group {
+    all: initial;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column; }
+    @media screen and (min-width: 650px) {
+      #bdwp-mail-form .bdwp-field-group.vertical {
+        flex-direction: row; } }
+    #bdwp-mail-form .bdwp-field-group .bdwp-field-object {
+      all: initial;
+      padding: 0 0.5em;
+      margin-bottom: 1em; }
+      #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field {
+        all: initial;
+        display: flex;
+        align-items: center;
+        flex-direction: column; }
+        @media screen and (min-width: 650px) {
+          #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field {
+            flex-direction: row;
+            width: initial; }
+            #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field.vertical {
+              flex-direction: column; }
+              #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field.vertical label {
+                margin-right: auto; }
+            #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field label {
+              margin-right: 0; }
+            #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field input {
+              width: initial; } }
+        #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field label {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          font-size: 1em;
+          font-weight: bold;
+          padding: 0.5em 1em 0.5em 0;
+          margin-right: auto; }
+        #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field input {
+          all: initial;
+          height: 2em;
+          border: 1px solid #333;
+          border-radius: 0.5em;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          font-size: 1em;
+          padding: 0.5em;
+          flex-grow: 1;
+          width: 100%;
+          box-sizing: border-box; }
+        #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field textarea {
+          all: initial;
+          font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+          border: 1px solid #333;
+          border-radius: 0.5em;
+          padding: 0.5em;
+          height: 8em;
+          width: 100%;
+          box-sizing: border-box; }
+      #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field-error {
+        all: initial;
+        display: block;
+        font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+        font-size: 0.9em;
+        padding: 0.1em 0.4em 0 0.4em;
+        margin-top: 5px;
+        color: #333;
+        border-top: 2px solid red; }
+        #bdwp-mail-form .bdwp-field-group .bdwp-field-object .bdwp-field-error:empty {
+          display: none; }
+  #bdwp-mail-form .bdwp-btn-group {
+    all: initial;
+    display: flex;
+    justify-content: flex-end; }
+    #bdwp-mail-form .bdwp-btn-group .bdwp-btn {
+      all: initial;
+      font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+      margin: 0 1em;
+      border: none;
+      border-radius: 0;
+      font-size: 1em;
+      font-weight: bold;
+      line-height: 2.5em;
+      height: 2.5em;
+      width: 7.5em;
+      padding: 0;
+      text-align: center;
+      transition: background-color 0.5s ease;
+      cursor: pointer; }
+      #bdwp-mail-form .bdwp-btn-group .bdwp-btn.btn-default {
+        background: #f7f7f7;
+        border: 3px solid #333;
+        color: #333;
+        box-sizing: border-box;
+        line-height: 0; }
+        #bdwp-mail-form .bdwp-btn-group .bdwp-btn.btn-default:hover {
+          background: #333;
+          color: white; }
+      #bdwp-mail-form .bdwp-btn-group .bdwp-btn.btn-primary {
+        background: #333;
+        color: white; }
+        #bdwp-mail-form .bdwp-btn-group .bdwp-btn.btn-primary:hover {
+          background: #5F5F5F; }
+  #bdwp-mail-form .bdwp-form-modal {
+    all: initial;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em; }
+    #bdwp-mail-form .bdwp-form-modal .bdwp-btn-group {
+      justify-content: center; }
+  #bdwp-mail-form .margin-left {
+    margin-left: 2em; }
+
+.select2-container {
+  width: 100% !important; }
+  .select2-container ul li {
+    margin-left: 0; }
+
+.location-loader {
+  background: url("loader.gif") center center/1.5em no-repeat;
+  width: 1.5em;
+  height: 1.5em;
+  position: absolute;
+  left: -2em;
+  z-index: 10;
+}

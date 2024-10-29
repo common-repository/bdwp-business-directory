@@ -1,0 +1,7 @@
+{
+  "triggerMarker": "bdwp-tabs-trigger",
+  "targetMarker": "bdwp-tabs-target",
+  "cssClass": "active",
+  "remoteClass": "bdwp-tabs-remote",
+  "poolMarker": "data-bdwp-tabs='pool'"
+}

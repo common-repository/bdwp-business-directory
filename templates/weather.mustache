@@ -1,0 +1,30 @@
+<div class="weather-header" data-bdwp-tabs=pool>
+    <div class="weather-tab active" data-bdwp-tabs-trigger="today">
+        <span>Σήμερα</span>
+    </div>
+    <div class="weather-tab" data-bdwp-tabs-trigger="forecast">
+        <span>Πρόβλεψη</span>
+    </div>
+</div>
+<div data-bdwp-tabs-target="today" class="weather-pane">
+    <img src="https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/{{item.condition.code}}d.png" alt="{{item.condition.text}}" />
+    <ul class="bdwp-branch-weather-details">
+        <li class="weather-temp"><span>{{item.condition.temp}}&#8451</span></li>
+        <li class="weather-condition"><span>{{item.condition.text}}</span></li>
+        <li class="weather-wind">
+            <span class="wi wi-fw wi-wind towards-{{wind.direction}}-deg"></span>
+            <span>{{wind.speed}} km/ώρα</span>
+        </li>
+    </ul>
+</div>
+<div data-bdwp-tabs-target="forecast" class="weather-pane" hidden>
+    {{#item.forecast}}
+    <div class="weather-detail">
+        <div class="weather-day"><span>{{day}}</span></div>
+        <div class="weather-thumbnail">
+            <img src="https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/{{code}}ds.png" alt="{{text}}"/>
+        </div>
+        <div class="weather-day-temp"><span>{{low}}...{{high}}</span></div>
+    </div>
+    {{/item.forecast}}
+</div>
